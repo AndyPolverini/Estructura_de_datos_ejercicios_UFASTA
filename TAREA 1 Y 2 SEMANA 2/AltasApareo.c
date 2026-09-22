@@ -6,15 +6,10 @@ typedef struct {
     char cod[6], des[25];
     int cant;
 } RL;
-typedef struct {
-    char cod[6], des[25];
-    int cant;
-} RA; 
 
 void apareoAlta() {
     FILE *archL, *archA, *arch3;
-    RL regL;
-    RA regA;
+    RL regL, regA;
     
     archL = fopen("LIBROS.DAT", "rb");
     if (archL != NULL) {
@@ -27,7 +22,7 @@ void apareoAlta() {
 
           
             fread(&regL, sizeof(RL), 1, archL);
-            fread(&regA, sizeof(RA), 1, archA);
+            fread(&regA, sizeof(RL), 1, archA);
             
             while (strcmp(regL.cod, "ZZZZ") != 0 || strcmp(regA.cod, "ZZZZ") != 0) {
                 if (strcmp(regL.cod, regA.cod) < 0) { 
@@ -36,11 +31,11 @@ void apareoAlta() {
                 }
                 else if (strcmp(regL.cod, regA.cod) == 0) { 
                     printf("ERROR: El codigo %s ya existe.\n", regA.cod);
-                    fread(&regA, sizeof(RA), 1, archA);
+                    fread(&regA, sizeof(RL), 1, archA);
                 }
                 else {
-                    fwrite(&regA, sizeof(RA), 1, arch3);
-                    fread(&regA, sizeof(RA), 1, archA);
+                    fwrite(&regA, sizeof(RL), 1, arch3);
+                    fread(&regA, sizeof(RL), 1, archA);
                 }
             }
             

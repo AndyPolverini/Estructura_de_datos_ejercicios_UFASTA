@@ -4,9 +4,7 @@ int suma(int vector[], int tamaño)
 {
     int total = 0;
     for (int i = 0; i < tamaño; i++)
-    {
         total += vector[i];
-    }
     return total;
 }
 
@@ -20,12 +18,12 @@ int maximoInt(int vector[], int tamaño)
 {
     int max = vector[0];
     for (int i = 1; i < tamaño; i++)
-    {
+    
         if (vector[i] > max)
-        {
+        
             max = vector[i];
-        }
-    }
+        
+    
     return max;
 }
 
@@ -33,12 +31,8 @@ void maximoVoid(int vector[], int tamaño, int *resultadoMax)
 {
     int max = vector[0];
     for (int i = 1; i < tamaño; i++)
-    {
         if (vector[i] > max)
-        {
             max = vector[i];
-        }
-    }
     *resultadoMax = max;
 }
 
@@ -46,39 +40,29 @@ int minimoInt(int vector[], int tamaño)
 {
     int min = vector[0];
     for (int i = 1; i < tamaño; i++)
-    {
         if (vector[i] < min)
-        {
             min = vector[i];
-        }
-    }
     return min;
 }
 
 void minimoVoid(int vector[], int tamaño, int *resultadoMin)
 {
-    int min = vector[0];
-    for (int i = 1; i < tamaño; i++)
-    {
-        if (vector[i] < min)
-        {
-            min = vector[i];
-        }
-    }
-    *resultadoMin = min;
+    int i;
+    *resultadoMin = vector[0];
+    for (i = 1; i < tamaño; i++)
+        if (vector[i] < *resultadoMin)
+            *resultadoMin = vector[i];
 }
 
 int filtrarMayoresK(int vectorA[], int tamañoA, int vectorB[], int K)
 {
-    int tamañoB = 0;
-    for (int i = 0; i < tamañoA; i++)
-    {
+    int i, tamañoB = 0;
+    for (i = 0; i < tamañoA; i++)
         if (vectorA[i] > K)
         {
             vectorB[tamañoB] = vectorA[i];
             tamañoB++;
         }
-    }
     return tamañoB;
 }
 
